@@ -86,19 +86,19 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ knowledgeBase, apiKey, lo
   };
 
   return (
-    <div className="flex flex-col h-[550px] md:h-[650px] w-full max-w-lg mx-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-white/40">
+    <div className="flex flex-col h-full w-full bg-white/95 backdrop-blur-md overflow-hidden">
       
       {/* Header */}
-      <div className={`bg-gradient-to-r ${BRAND_COLORS.gradient} p-4 flex flex-col items-center justify-center text-white relative shadow-md`}>
-        <div className="flex items-center space-x-2">
-            <span className="text-yellow-300 text-lg"><i className="fas fa-star"></i></span>
+      <div className={`bg-gradient-to-r ${BRAND_COLORS.gradient} p-4 flex flex-col items-center justify-center text-white relative shadow-md flex-shrink-0`}>
+        <div className="flex items-center space-x-3">
+            <img src={logoUrl} alt="Logo" className="h-10 w-10 rounded-full object-cover border-2 border-white/30 bg-white" />
             <h1 className="text-xl font-bold tracking-wide">Oriana Assistant</h1>
         </div>
         <p className="text-xs opacity-90 mt-1">GRT Jewels - Multilingual Voice Support</p>
       </div>
 
       {/* Connection Status Indicator */}
-      <div className="bg-white border-b border-gray-100 py-1 px-4 text-center">
+      <div className="bg-white border-b border-gray-100 py-1 px-4 text-center flex-shrink-0">
          <p className="text-xs text-gray-400 uppercase tracking-widest">
            {knowledgeBase.length > 0 ? (
              <span className="text-emerald-500"><i className="fas fa-link mr-1"></i>Connected to Knowledge Base</span>
@@ -110,7 +110,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ knowledgeBase, apiKey, lo
 
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar bg-gray-50/50">
-        <div className="space-y-4">
+        <div className="space-y-4 max-w-3xl mx-auto w-full">
           {messages.map((msg) => (
             <div 
               key={msg.id} 
@@ -123,7 +123,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ knowledgeBase, apiKey, lo
               )}
               
               <div 
-                className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm ${
+                className={`max-w-[85%] sm:max-w-[75%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm ${
                   msg.role === 'user' 
                     ? 'bg-emerald-600 text-white rounded-br-none' 
                     : 'bg-white text-gray-800 border border-gray-100 rounded-bl-none'
@@ -137,14 +137,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ knowledgeBase, apiKey, lo
                         </p>
                     ))}
                 </div>
-                
-                {msg.role === 'model' && (
-                   <div className="mt-1 text-right">
-                       <button className="text-blue-500 hover:text-blue-700 text-xs">
-                           <i className="fas fa-volume-up"></i>
-                       </button>
-                   </div>
-                )}
               </div>
             </div>
           ))}
@@ -165,16 +157,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ knowledgeBase, apiKey, lo
       </div>
 
       {/* Input Area */}
-      <div className="p-4 bg-white border-t border-gray-100">
-        <div className="relative flex items-center bg-gray-50 border border-gray-200 rounded-full px-2 py-1 shadow-inner focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-transparent transition-all">
-          <button className="p-3 text-blue-500 hover:bg-blue-50 rounded-full transition-colors">
-            <i className="fas fa-microphone"></i>
-          </button>
+      <div className="p-4 bg-white border-t border-gray-100 flex-shrink-0">
+        <div className="max-w-3xl mx-auto w-full relative flex items-center bg-gray-50 border border-gray-200 rounded-full px-2 py-1 shadow-inner focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-transparent transition-all">
           
           <input
             type="text"
-            className="flex-1 bg-transparent border-none focus:ring-0 text-sm text-gray-700 placeholder-gray-400 px-2"
-            placeholder="Type or speak your question..."
+            className="flex-1 bg-transparent border-none focus:ring-0 text-sm text-gray-700 placeholder-gray-400 px-4 py-3"
+            placeholder="Type your question..."
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -184,7 +173,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ knowledgeBase, apiKey, lo
           <button 
             onClick={handleSendMessage}
             disabled={!inputText.trim() || isLoading}
-            className={`p-3 rounded-full transition-all ${
+            className={`p-3 rounded-full transition-all flex-shrink-0 ml-1 ${
                 inputText.trim() 
                 ? 'bg-emerald-500 text-white hover:bg-emerald-600 shadow-md transform hover:scale-105' 
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'

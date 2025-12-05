@@ -47,7 +47,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${BRAND_COLORS.gradient} flex items-center justify-center p-4 md:p-6 relative`}>
+    <div className={`h-screen w-screen bg-gradient-to-br ${BRAND_COLORS.gradient} overflow-hidden relative`}>
       
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -59,18 +59,15 @@ const App: React.FC = () => {
       <div className="absolute top-4 right-4 z-40">
         <button 
           onClick={() => setAppState(AppState.ADMIN_LOGIN)}
-          className="text-white/80 hover:text-white hover:bg-white/10 px-3 py-1 rounded-full text-xs font-semibold transition flex items-center backdrop-blur-sm border border-white/20"
+          className="text-white/90 hover:text-white hover:bg-white/20 px-3 py-1 rounded-full text-xs font-semibold transition flex items-center backdrop-blur-md border border-white/30 shadow-sm"
         >
-          <i className="fas fa-cog mr-1"></i> Admin Settings
+          <i className="fas fa-cog mr-1"></i> Admin
         </button>
       </div>
 
       {/* Main Content Render */}
       {appState === AppState.CHAT && (
-        <div className="w-full max-w-lg z-10">
-           <div className="mb-6 text-center">
-              <img src={customLogo} alt="Oriana Logo" className="h-16 mx-auto mb-2 rounded-lg shadow-lg object-contain bg-white/20 backdrop-blur-sm p-1" />
-           </div>
+        <div className="h-full w-full z-10">
            <ChatInterface knowledgeBase={knowledgeBase} apiKey={apiKey} logoUrl={customLogo} />
         </div>
       )}
