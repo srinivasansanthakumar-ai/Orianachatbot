@@ -1,0 +1,5 @@
+{
+  "name": "Oriana Assistant RAG",
+  "description": "A RAG-based multilingual voice support assistant for GRT Jewels Oriana brand, featuring document upload, vector search, and admin management.",
+  "requestFramePermissions": []
+}
