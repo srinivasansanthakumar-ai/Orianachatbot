@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "rm -rf package-lock.json || true",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -11,7 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@google/genai": "latest"
+    "@google/genai": "*"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -22,5 +23,8 @@
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

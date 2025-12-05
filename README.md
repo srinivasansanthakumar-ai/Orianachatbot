@@ -2,6 +2,17 @@
 
 A client-side RAG (Retrieval-Augmented Generation) chatbot for GRT Jewels Oriana brand, built with React, Vite, and Google Gemini API.
 
+## 🚨 Vercel Deployment Troubleshooting 🚨
+
+**If you see `npm error code ETARGET` or `No matching version found for @google/genai`:**
+
+This is caused by an old `package-lock.json` file in your repository.
+1. Go to your GitHub Repository.
+2. Find the file named `package-lock.json`.
+3. **Delete it.**
+4. Commit the change.
+5. Redeploy on Vercel.
+
 ## Features
 - **Multilingual Support**: Supports English, Tamil, Telugu, and Kannada.
 - **RAG Capability**: Upload text/PDF documents to train the bot instantly.
