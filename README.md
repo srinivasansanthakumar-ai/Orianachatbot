@@ -1,20 +1,63 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Oriana Assistant RAG Bot
 
-# Run and deploy your AI Studio app
+A client-side RAG (Retrieval-Augmented Generation) chatbot for GRT Jewels Oriana brand, built with React, Vite, and Google Gemini API.
 
-This contains everything you need to run your app locally.
+## Features
+- **Multilingual Support**: Supports English, Tamil, Telugu, and Kannada.
+- **RAG Capability**: Upload text/PDF documents to train the bot instantly.
+- **Vector Search**: Uses Gemini Embeddings for context-aware answers.
+- **Admin Panel**: Secure area to manage API keys and Knowledge Base documents.
+- **Brand Customization**: Upload custom logos.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1NHz7RZ2kZyDVzmdH70mfYYFXRRA5LmkF
+## Step-by-Step Deployment Procedure
 
-## Run Locally
+### 1. Prerequisites
+- A GitHub account.
+- A [Vercel](https://vercel.com) account.
+- A Google Cloud API Key with Gemini API access.
 
-**Prerequisites:**  Node.js
+### 2. Local Setup (Optional)
+If you downloaded these files:
+1. Open a terminal in the folder.
+2. Run `npm install` to install dependencies.
+3. Run `npm run dev` to test locally.
 
+### 3. Deploying to Vercel (Recommended)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1.  **Create a GitHub Repository**:
+    *   Go to GitHub and create a new repository (e.g., `oriana-assistant`).
+    *   Upload all the project files (`package.json`, `index.tsx`, `App.tsx`, etc.) to this repository.
+
+2.  **Import to Vercel**:
+    *   Log in to Vercel.
+    *   Click **"Add New..."** -> **"Project"**.
+    *   Select the `oriana-assistant` repository you just created.
+
+3.  **Configure Project**:
+    *   **Framework Preset**: Select **Vite** (Vercel usually detects this automatically).
+    *   **Root Directory**: Leave as `./`.
+    *   **Environment Variables**:
+        *   Click the toggle to open Environment Variables.
+        *   Add Key: `API_KEY`
+        *   Add Value: `AIzaSy...` (Your Google Gemini API Key).
+        *   *Note: While the app allows entering the key in the Admin Panel, setting it here ensures it's available by default.*
+
+4.  **Deploy**:
+    *   Click **"Deploy"**.
+    *   Wait for the build to finish (approx. 1 minute).
+
+5.  **Use the App**:
+    *   Once deployed, click the domain link provided by Vercel.
+    *   Go to Admin Panel (Top Right).
+    *   Login (User: `Admin`, Pass: `Admin@1234`).
+    *   Upload your training documents.
+
+## Admin Credentials
+- **Username**: `Admin`
+- **Password**: `Admin@1234`
+
+## Tech Stack
+- **Frontend**: React + Vite
+- **Styling**: Tailwind CSS
+- **AI/LLM**: Google Gemini (`gemini-2.5-flash` for chat, `text-embedding-004` for vectors)
+- **Icons**: FontAwesome
